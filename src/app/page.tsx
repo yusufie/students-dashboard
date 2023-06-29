@@ -1,25 +1,31 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
+// import useAuthStore from "@/store/authStore";
+import dynamic from "next/dynamic";
 
 import Navbar from "@/components/Navbar"
 import Header from "@/components/Header";
+
 import { PiGraduationCap } from "react-icons/pi"
 import { BsBookmark } from 'react-icons/bs';
 import { RiMoneyDollarBoxLine } from 'react-icons/ri';
 import { FaRegUser } from 'react-icons/fa';
 
-
+const useAuthStore:any = dynamic(() => import("@/store/authStore"), {
+  ssr: false,
+});
 export default function Home() {
-
   const router = useRouter();
+  const isLoggedIn = useAuthStore((state: any) => state.isLoggedIn);
 
-  // Check if the user is authenticated
-  const isLoggedIn = true; // Replace with your authentication check logic
+  useEffect(() => {
+    if (!isLoggedIn) {
+      router.push("/login");
+    }
+  }, [isLoggedIn, router]);
 
-  // If the user is not logged in, redirect them to the login page
   if (!isLoggedIn) {
-    router.push("/login");
     return null;
   }
 

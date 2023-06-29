@@ -1,27 +1,26 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
+import useAuthStore from "@/store/authStore";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // to track login status
+  const login = useAuthStore((state) => state.login);
   const router = useRouter();
 
-  useEffect(() => {
-    // If the user is already logged in, redirect them to the home page
-    if (isLoggedIn) {
-      router.push("/");
-    }
-  }, [isLoggedIn, router]);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Simulate authentication logic
-    // Assuming the credentials are valid, set isLoggedIn to true
-    setIsLoggedIn(true);
+    // Save authentication state in local storage
+    localStorage.setItem("isLoggedIn", "true");
+
+    // Call the login action to set the Zustand state
+    login();
+
+    router.push("/");
   };
 
   return (
