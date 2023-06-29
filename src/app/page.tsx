@@ -1,12 +1,30 @@
+"use client";
+import React from "react";
+import { useRouter } from "next/navigation";
+
 import Navbar from "@/components/Navbar"
+import Header from "@/components/Header";
 import { PiGraduationCap } from "react-icons/pi"
 import { BsBookmark } from 'react-icons/bs';
 import { RiMoneyDollarBoxLine } from 'react-icons/ri';
 import { FaRegUser } from 'react-icons/fa';
-import Header from "@/components/Header";
 
 
 export default function Home() {
+
+  const router = useRouter();
+
+  // Check if the user is authenticated
+  const isLoggedIn = true; // Replace with your authentication check logic
+
+  // If the user is not logged in, redirect them to the login page
+  if (!isLoggedIn) {
+    router.push("/login");
+    return null;
+  }
+
+
+
   return (
     
     <main className="homePage">

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AiOutlineHome } from 'react-icons/ai';
 import { BsBookmark } from 'react-icons/bs';
 import { PiGraduationCap, PiSlidersBold } from 'react-icons/pi';
@@ -27,43 +28,58 @@ function Navbar() {
 
         <ul className="navbarList">
 
-          <li className="navbarListItem">
-          <AiOutlineHome />
-            <p>Home</p>
-          </li>
+          <Link href="/">
+            <li className="navbarListItem">
+            <AiOutlineHome />
+              <p>Home</p>
+            </li>
+          </Link>
 
-          <li className="navbarListItem">
-            <BsBookmark />
-            <p>Course</p>
-          </li>
+          <Link href="/course">
+            <li className="navbarListItem">
+              <BsBookmark />
+              <p>Course</p>
+            </li>
+          </Link>
+          
+          <Link href="/students">
+            <li className="navbarListItem">
+              <PiGraduationCap />
+              <p>Students</p>
+            </li>
+          </Link>
 
-          <li className="navbarListItem">
-            <PiGraduationCap />
-            <p>Students</p>
-          </li>
-
+          <Link href="/payment">
           <li className="navbarListItem">
             <RiMoneyDollarBoxLine />
             <p>Payment</p>
           </li>
+          </Link>
 
+          <Link href="/report">
           <li className="navbarListItem">
             <LuFileBarChart2 />
             <p>Report</p>
           </li>
+          </Link>
 
+          <Link href="/settings">
           <li className="navbarListItem">
             <PiSlidersBold />
             <p>Settings</p>
           </li>
+          </Link>
+
         </ul>
 
       </div>
 
-      <div className="logout">
-        <p>Logout</p>
-        <GoSignOut />
-      </div>
+      <Link href="/login">
+        <div className="logout">
+          <p>Logout</p>
+          <GoSignOut />
+        </div>
+      </Link>
 
     </div>
   )

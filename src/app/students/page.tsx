@@ -8,9 +8,7 @@ function Students() {
     
     <section className="studentsPage">
 
-      <div className="">
         <Navbar />
-      </div>
 
       <div className="studentsOverview">
 
@@ -54,7 +52,7 @@ function Students() {
                 <td>7305477760</td>
                 <td>karthi.lorem.com</td>
                 <td>Deckow-Crist</td>
-                <td><GoPencil style={{height:"19px", width:"19px", color:"#FEAF00"}}/></td>
+                <td><GoPencil style={{height:"19px", width:"19px", color:"#FEAF00", marginRight:"1em"}}/></td>
                 <td><FiTrash style={{height:"19px", width:"19px", color:"#FEAF00"}}/></td>
               </tr>
 
