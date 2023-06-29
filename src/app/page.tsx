@@ -29,8 +29,6 @@ export default function Home() {
     return null;
   }
 
-
-
   return (
     
     <main className="homePage">

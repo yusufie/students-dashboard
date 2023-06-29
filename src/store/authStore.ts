@@ -1,4 +1,4 @@
-import {create} from 'zustand';
+import { create } from 'zustand';
 
 type AuthState = {
   isLoggedIn: boolean;
@@ -7,19 +7,15 @@ type AuthState = {
 };
 
 const useAuthStore = create<AuthState>((set) => ({
-  isLoggedIn: typeof window !== 'undefined' && localStorage.getItem('isLoggedIn') === 'true',
+  isLoggedIn: false,
   login: () => {
-    if (typeof window !== 'undefined') {
-      // Save authentication state in local storage
-      localStorage.setItem('isLoggedIn', 'true');
-    }
+    // Save authentication state in local storage
+    localStorage.setItem('isLoggedIn', 'true');
     set({ isLoggedIn: true });
   },
   logout: () => {
-    if (typeof window !== 'undefined') {
-      // Remove authentication state from local storage
-      localStorage.removeItem('isLoggedIn');
-    }
+    // Remove authentication state from local storage
+    localStorage.removeItem('isLoggedIn');
     set({ isLoggedIn: false });
   },
 }));
