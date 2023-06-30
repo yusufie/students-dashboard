@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import { GoPencil } from "react-icons/go";
-import { FiTrash } from "react-icons/fi";
+import DeleteStudentButton from "@/components/DeleteStudentButton";
 
 import AddStudentForm from "@/components/AddStudentForm";
 import UpdateStudentForm from "@/components/UpdateStudentForm";
@@ -23,7 +23,7 @@ function Students() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [showModal, setShowModal] = useState(false);
-  
+
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
 
@@ -85,20 +85,23 @@ function Students() {
 
   const updateStudent = async (updatedStudent: Student) => {
     try {
-      const response = await fetch(`https://dummyjson.com/users/${updatedStudent.id}`, {
-        method: 'PUT', // or 'PATCH'
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          firstName: updatedStudent.firstName,
-          lastName: updatedStudent.lastName,
-          email: updatedStudent.email,
-          phone: updatedStudent.phone,
-          domain: updatedStudent.domain,
-          company: { name: updatedStudent.company.name },
-        }),
-      });
+      const response = await fetch(
+        `https://dummyjson.com/users/${updatedStudent.id}`,
+        {
+          method: "PUT", // or 'PATCH'
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            firstName: updatedStudent.firstName,
+            lastName: updatedStudent.lastName,
+            email: updatedStudent.email,
+            phone: updatedStudent.phone,
+            domain: updatedStudent.domain,
+            company: { name: updatedStudent.company.name },
+          }),
+        }
+      );
       const data = await response.json();
-  
+
       // Update the corresponding student in the `students` state
       const updatedStudents = students.map((student) => {
         if (student.id === data.id) {
@@ -106,15 +109,13 @@ function Students() {
         }
         return student;
       });
-  
+
       setStudents(updatedStudents);
       console.log("Student updated:", data);
     } catch (error) {
       console.error("Error updating student:", error);
     }
   };
-  
-
 
   const openModal = () => {
     setShowModal(true);
@@ -214,11 +215,13 @@ function Students() {
                     />
                   </td>
                   <td>
-                    <FiTrash
-                      style={{
-                        height: "19px",
-                        width: "19px",
-                        color: "#FEAF00",
+                    <DeleteStudentButton
+                      studentId={student.id}
+                      onDeleteStudent={(deletedStudentId) => {
+                        const updatedStudents = students.filter(
+                          (student) => student.id !== deletedStudentId
+                        );
+                        setStudents(updatedStudents);
                       }}
                     />
                   </td>
