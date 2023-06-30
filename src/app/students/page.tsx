@@ -5,7 +5,11 @@ import Header from "@/components/Header";
 import { GoPencil } from "react-icons/go";
 import { FiTrash } from "react-icons/fi";
 
+import AddStudentForm from "@/components/AddStudentForm";
+import UpdateStudentForm from "@/components/UpdateStudentForm";
+
 interface Student {
+  id: string | number;
   firstName: string;
   lastName: string;
   email: string;
@@ -19,14 +23,9 @@ function Students() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const [showModal, setShowModal] = useState(false);
-  const [newStudent, setNewStudent] = useState<Student>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    domain: "",
-    company: { name: "" },
-  });
+  
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
 
   useEffect(() => {
     fetchStudents();
@@ -74,51 +73,69 @@ function Students() {
     );
   };
 
+  const openUpdateModal = (student: Student) => {
+    setSelectedStudent(student);
+    setShowUpdateModal(true);
+  };
+
+  const closeUpdateModal = () => {
+    setSelectedStudent(null);
+    setShowUpdateModal(false);
+  };
+
+  const updateStudent = async (updatedStudent: Student) => {
+    try {
+      const response = await fetch(`https://dummyjson.com/users/${updatedStudent.id}`, {
+        method: 'PUT', // or 'PATCH'
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: updatedStudent.firstName,
+          lastName: updatedStudent.lastName,
+          email: updatedStudent.email,
+          phone: updatedStudent.phone,
+          domain: updatedStudent.domain,
+          company: { name: updatedStudent.company.name },
+        }),
+      });
+      const data = await response.json();
+  
+      // Update the corresponding student in the `students` state
+      const updatedStudents = students.map((student) => {
+        if (student.id === data.id) {
+          return data;
+        }
+        return student;
+      });
+  
+      setStudents(updatedStudents);
+      console.log("Student updated:", data);
+    } catch (error) {
+      console.error("Error updating student:", error);
+    }
+  };
+  
+
+
   const openModal = () => {
     setShowModal(true);
   };
 
   const closeModal = () => {
     setShowModal(false);
-    clearForm();
   };
 
-  const clearForm = () => {
-    setNewStudent({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      domain: "",
-      company: { name: "" },
-    });
-  };
-
-  const handleFormChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = event.target;
-    setNewStudent((prevStudent) => ({
-      ...prevStudent,
-      [name]: value,
-    }));
-  };
-
-  const addNewStudent = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const addNewStudent = async (student: Student) => {
     try {
       const response = await fetch("https://dummyjson.com/users/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newStudent),
+        body: JSON.stringify(student),
       });
       const data = await response.json();
 
-    // Update the list of students by inserting the new student at the beginning
-    setStudents((prevStudents) => [data, ...prevStudents]);
-    
-      clearForm();
-      closeModal();
+      // Update the list of students by inserting the new student at the beginning
+      setStudents((prevStudents) => [data, ...prevStudents]);
+
       console.log("New student added:", data);
     } catch (error) {
       console.error("Error adding new student:", error);
@@ -144,52 +161,10 @@ function Students() {
             />
 
             {showModal ? (
-              <div className="modal">
-                <div className="modalContent">
-                  <h2>Add New Student</h2>
-
-                  <form onSubmit={addNewStudent}>
-                    <input
-                      type="text"
-                      name="firstName"
-                      value={newStudent.firstName}
-                      onChange={handleFormChange}
-                      placeholder="First Name"
-                    />
-
-                    <input
-                      type="text"
-                      name="lastName"
-                      value={newStudent.lastName}
-                      onChange={handleFormChange}
-                      placeholder="Last Name"
-                    />
-
-                    <input
-                      type="email"
-                      name="email"
-                      value={newStudent.email}
-                      onChange={handleFormChange}
-                      placeholder="Email"
-                    />
-
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={newStudent.phone}
-                      onChange={handleFormChange}
-                      placeholder="Phone"
-                    />
-                    
-                    <div className="modalButtons">
-                      <button type="submit">Save</button>
-                      <button type="button" onClick={closeModal}>
-                        Cancel
-                      </button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+              <AddStudentForm
+                onAddStudent={addNewStudent}
+                onCloseModal={closeModal}
+              />
             ) : (
               <button className="add-student-button" onClick={openModal}>
                 ADD NEW STUDENT
@@ -214,8 +189,8 @@ function Students() {
             </thead>
 
             <tbody>
-              {filteredStudents.map((student, index) => (
-                <tr key={index}>
+              {filteredStudents.map((student) => (
+                <tr key={student.id}>
                   <td id="picture">Picture</td>
                   <td>
                     {highlightMatch(
@@ -235,6 +210,7 @@ function Students() {
                         color: "#FEAF00",
                         marginRight: "1em",
                       }}
+                      onClick={() => openUpdateModal(student)}
                     />
                   </td>
                   <td>
@@ -252,6 +228,15 @@ function Students() {
           </table>
         </div>
       </div>
+
+      {/* Update Student Modal */}
+      {showUpdateModal && selectedStudent !== null && (
+        <UpdateStudentForm
+          student={selectedStudent}
+          onUpdateStudent={updateStudent}
+          onCloseModal={closeUpdateModal}
+        />
+      )}
     </section>
   );
 }
