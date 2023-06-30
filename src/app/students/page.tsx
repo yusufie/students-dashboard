@@ -8,7 +8,8 @@ import DeleteStudentButton from "@/components/DeleteStudentButton";
 import AddStudentForm from "@/components/AddStudentForm";
 import UpdateStudentForm from "@/components/UpdateStudentForm";
 import Pagination from "@/components/Pagination";
-
+import { useRouter } from 'next/navigation';
+import querystring from 'querystring';
 interface Student {
   id: string | number;
   firstName: string;
@@ -27,12 +28,19 @@ function Students() {
 
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
+  const router = useRouter();
   const [rowsPerPage, setRowsPerPage] = useState(6);
+  const [currentPage, setCurrentPage] = useState(1);
+
 
   useEffect(() => {
+    const { query } = router as any;
+    const page = query?.page ? Number(query.page) : 1;
+    setCurrentPage(page);
     fetchStudents();
-  }, []);
+  }, [router]);
+  
+
 
   const fetchStudents = async () => {
     try {
@@ -154,8 +162,13 @@ function Students() {
   };
 
   const handlePageChange = (page: number) => {
+    const queryString = querystring.stringify({ page });
+    const url = `/students?${queryString}`;
+    router.push(url);
     setCurrentPage(page);
   };
+  
+  
 
   const handleRowsPerPageChange = (rowsPerPage: number) => {
     setRowsPerPage(rowsPerPage);
