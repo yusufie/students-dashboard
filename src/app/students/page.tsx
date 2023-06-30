@@ -7,6 +7,7 @@ import DeleteStudentButton from "@/components/DeleteStudentButton";
 
 import AddStudentForm from "@/components/AddStudentForm";
 import UpdateStudentForm from "@/components/UpdateStudentForm";
+import Pagination from "@/components/Pagination";
 
 interface Student {
   id: string | number;
@@ -26,6 +27,8 @@ function Students() {
 
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(6);
 
   useEffect(() => {
     fetchStudents();
@@ -53,6 +56,13 @@ function Students() {
       student.phone.toLowerCase().includes(searchTerm.toLowerCase()) ||
       student.domain.toLowerCase().includes(searchTerm.toLowerCase()) ||
       student.company.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const indexOfLastStudent = currentPage * rowsPerPage;
+  const indexOfFirstStudent = indexOfLastStudent - rowsPerPage;
+  const currentStudents = filteredStudents.slice(
+    indexOfFirstStudent,
+    indexOfLastStudent
   );
 
   const highlightMatch = (text: string, search: string) => {
@@ -143,6 +153,14 @@ function Students() {
     }
   };
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleRowsPerPageChange = (rowsPerPage: number) => {
+    setRowsPerPage(rowsPerPage);
+  };
+
   return (
     <section className="studentsPage">
       <Navbar />
@@ -190,7 +208,7 @@ function Students() {
             </thead>
 
             <tbody>
-              {filteredStudents.map((student) => (
+              {currentStudents.map((student) => (
                 <tr key={student.id}>
                   <td id="picture">Picture</td>
                   <td>
@@ -230,6 +248,15 @@ function Students() {
             </tbody>
           </table>
         </div>
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={Math.ceil(filteredStudents.length / rowsPerPage)}
+          rowsPerPage={rowsPerPage}
+          onRowsPerPageChange={handleRowsPerPageChange}
+          onPageChange={handlePageChange}
+        />
+
       </div>
 
       {/* Update Student Modal */}
