@@ -443,35 +443,55 @@ body {
   margin-left: 24px;
 }
 
-.studentsPageTable {
+/* table start */
+#studentsList {
+  display: flex;
+  flex-direction: column;
   margin: 0 30px 0 30px;
-  
 }
 
 table {
   width: 100%;
-
+  background-color:#F8F8F8;
+  border: none;
 }
 
-.studentsPageTable th {
-  padding: 22px 0 22px 0;
+thead tr {
+  height: 58px;
+  align-items: start;
+  text-align: left;
   color: #acacac;
   font-size: 12px;
   /* font-family: Montserrat; */
+  font-style: normal;
   font-weight: 600;
-  text-align: left;
+  line-height: normal;
 }
 
-.studentsPageTable td {
+thead th {
+  padding: 0 14px 0 14px;
+}
+
+tbody {
+  gap: 10px;
+}
+
+tbody tr {
   height: 85px;
-  border-radius: 8px;
+  align-items: start;
   background: #fff;
-  /* padding: 14px 14px 14px 14px; */
-  text-align: left;
+  color: #000;
+  font-size: 14px;
+  /* font-family: Montserrat; */
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 10px 0 10px 0;
 }
 
-#picture {
-  padding-left: 14px;
+tbody td {
+  padding: 14px 14px 14px 14px;
+  margin-bottom: 14px;
 }
 
 .highlight {
@@ -543,12 +563,10 @@ table {
   background-color: #999;
 }
 
-
-
 /* pagination */
 .pagination {
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
   margin: 30px 30px 30px 30px;
 }
 
@@ -557,7 +575,7 @@ table {
 }
 
 .pagination-info span {
-  color: #9FA2B4;
+  color: #9fa2b4;
   font-size: 14px;
   /* font-family: Mulish; */
   font-style: normal;
@@ -568,16 +586,16 @@ table {
 
 .pagination-select {
   background: none;
-  color:  #4B506D;
+  color: #4b506d;
   cursor: pointer;
 
-/* Reg 14 (0.3 px) */
-font-size: 14px;
-/* font-family: Mulish; */
-font-style: normal;
-font-weight: 400;
-line-height: 20px;
-letter-spacing: 0.3px;
+  /* Reg 14 (0.3 px) */
+  font-size: 14px;
+  /* font-family: Mulish; */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.3px;
 }
 
 .pagination-select:focus {
@@ -604,13 +622,13 @@ letter-spacing: 0.3px;
   cursor: pointer;
   padding: 0 4px;
 
-  color:#9FA2B4;
-font-size: 14px;
-/* font-family: Mulish; */
-font-style: normal;
-font-weight: 400;
-line-height: 20px;
-letter-spacing: 0.3px;
+  color: #9fa2b4;
+  font-size: 14px;
+  /* font-family: Mulish; */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0.3px;
 
   border-radius: 4px;
   transition: background-color 0.3s;

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 import { GoPencil } from "react-icons/go";
@@ -16,6 +17,7 @@ interface Student {
   lastName: string;
   email: string;
   phone: string;
+  image: string;
   domain: string;
   company: { name: string };
 }
@@ -205,8 +207,8 @@ function Students() {
           </div>
         </div>
 
-        <div className="studentsPageTable">
-          <table className="table">
+        <div id="studentsList">
+          <table className="border border-separate border-spacing-y-3 ">
             <thead>
               <tr>
                 <th>{/*Picture */}</th>
@@ -220,10 +222,17 @@ function Students() {
               </tr>
             </thead>
 
-            <tbody>
+            <tbody className="border rounded-lg">
               {currentStudents.map((student) => (
-                <tr key={student.id}>
-                  <td id="picture">Picture</td>
+                <tr key={student.id} className="">
+                  <td className="rounded-xl rounded-e-none">
+                    <Image
+                      src={student.image}
+                      alt="student picture"
+                      width={65}
+                      height={55}
+                    />
+                    </td>
                   <td>
                     {highlightMatch(
                       `${student.firstName} ${student.lastName}`,
@@ -245,7 +254,7 @@ function Students() {
                       onClick={() => openUpdateModal(student)}
                     />
                   </td>
-                  <td>
+                  <td className="rounded-xl rounded-s-none">
                     <DeleteStudentButton
                       studentId={student.id}
                       onDeleteStudent={(deletedStudentId) => {

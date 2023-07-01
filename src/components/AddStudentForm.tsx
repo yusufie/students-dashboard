@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 
 interface Student {
   id: string | number;
@@ -6,6 +7,7 @@ interface Student {
     lastName: string;
     email: string;
     phone: string;
+    image: string;
     domain: string;
     company: { name: string };
   }
@@ -19,12 +21,16 @@ const AddStudentForm: React.FC<AddStudentFormProps> = ({
   onAddStudent,
   onCloseModal,
 }) => {
+
+  const defaultImage = "/next.svg";
+
   const [newStudent, setNewStudent] = useState<Student>({
     id: "",
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
+    image: defaultImage,
     domain: "",
     company: { name: "" },
   });
@@ -53,6 +59,7 @@ const AddStudentForm: React.FC<AddStudentFormProps> = ({
       lastName: "",
       email: "",
       phone: "",
+      image: "",
       domain: "",
       company: { name: "" },
     });
@@ -64,6 +71,22 @@ const AddStudentForm: React.FC<AddStudentFormProps> = ({
         <h2>Add New Student</h2>
 
         <form onSubmit={addNewStudent}>
+
+        <div>
+            <Image
+              src={newStudent.image}
+              alt="Student Picture"
+              width={65}
+              height={55}
+            />
+            <input
+              type="text"
+              name="image"
+              value={newStudent.image}
+              readOnly // Make the input field read-only
+            />
+          </div>
+
           <input
             type="text"
             name="firstName"

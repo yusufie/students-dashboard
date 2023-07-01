@@ -6,6 +6,7 @@ interface Student {
   lastName: string;
   email: string;
   phone: string;
+  image: string;
   domain: string;
   company: { name: string };
 }
