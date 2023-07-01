@@ -1,5 +1,6 @@
 import React from "react";
 import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri";
+import "./pagination.css";
 
 interface PaginationProps {
   currentPage: number;

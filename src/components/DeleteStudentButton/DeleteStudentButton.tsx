@@ -1,5 +1,6 @@
 "use client";
 import React, { useState }  from "react";
+import './deletebutton.css'
 import { FiTrash } from "react-icons/fi";
 
 interface DeleteStudentButtonProps {
@@ -53,7 +54,7 @@ const DeleteStudentButton: React.FC<DeleteStudentButtonProps> = ({
           <div className="modalContent">
             <h2>Confirm Delete</h2>
             <p>Are you sure you want to delete this student?</p>
-            <div className="modal-buttons">
+            <div className="modalButtons">
               <button onClick={handleDelete}>Delete</button>
               <button onClick={closeConfirmationModal}>Cancel</button>
             </div>

@@ -1,14 +1,15 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Navbar from "@/components/Navbar";
-import Header from "@/components/Header";
+import './page.css'
+import Navbar from "@/components/Navbar/Navbar";
+import Header from "@/components/Header/Header";
 import { GoPencil } from "react-icons/go";
-import DeleteStudentButton from "@/components/DeleteStudentButton";
+import DeleteStudentButton from "@/components/DeleteStudentButton/DeleteStudentButton";
 
-import AddStudentForm from "@/components/AddStudentForm";
-import UpdateStudentForm from "@/components/UpdateStudentForm";
-import Pagination from "@/components/Pagination";
+import AddStudentForm from "@/components/AddStudentForm/AddStudentForm";
+import UpdateStudentForm from "@/components/UpdateStudentForm/UpdateStudentForm";
+import Pagination from "@/components/Pagination/Pagination";
 import { useRouter } from 'next/navigation';
 import querystring from 'querystring';
 interface Student {
