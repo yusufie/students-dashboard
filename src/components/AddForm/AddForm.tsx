@@ -13,12 +13,12 @@ interface Student {
     company: { name: string };
   }
 
-interface AddStudentFormProps {
+interface AddFormProps {
   onAddStudent: (student: Student) => void;
   onCloseModal: () => void;
 }
 
-const AddStudentForm: React.FC<AddStudentFormProps> = ({
+const AddForm: React.FC<AddFormProps> = ({
   onAddStudent,
   onCloseModal,
 }) => {
@@ -132,4 +132,4 @@ const AddStudentForm: React.FC<AddStudentFormProps> = ({
   );
 };
 
-export default AddStudentForm;
+export default AddForm;

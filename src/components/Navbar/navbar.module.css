@@ -79,6 +79,10 @@
     background: #feaf00;
     cursor: pointer;
   }
+
+  .navbarListItem.active {
+    background: #feaf00;
+  }  
   
   .navbarListItem p {
     margin-left: 20px;

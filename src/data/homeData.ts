@@ -3,7 +3,9 @@ import { BsBookmark } from 'react-icons/bs';
 import { RiMoneyDollarBoxLine } from 'react-icons/ri';
 import { FaRegUser } from 'react-icons/fa';
 
-const homeData = [
+import HomeType from "@/types/HomeType"
+
+const homeData: HomeType[] = [
     {
       id: 1,
       icon: PiGraduationCap,

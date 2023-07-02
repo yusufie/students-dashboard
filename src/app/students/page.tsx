@@ -5,10 +5,10 @@ import styles from './page.module.css'
 import Navbar from "@/components/Navbar/Navbar";
 import Header from "@/components/Header/Header";
 import { GoPencil } from "react-icons/go";
-import DeleteStudentButton from "@/components/DeleteStudentButton/DeleteStudentButton";
+import DeleteButton from "@/components/DeleteButton/DeleteButton";
 import { IoMdSearch } from 'react-icons/io';
-import AddStudentForm from "@/components/AddStudentForm/AddStudentForm";
-import UpdateStudentForm from "@/components/UpdateStudentForm/UpdateStudentForm";
+import AddForm from "@/components/AddForm/AddForm";
+import UpdateForm from "@/components/UpdateForm/UpdateForm";
 import Pagination from "@/components/Pagination/Pagination";
 import { useRouter } from 'next/navigation';
 import querystring from 'querystring';
@@ -199,7 +199,7 @@ function Students() {
             {/* </div> */}
 
             {showModal ? (
-              <AddStudentForm
+              <AddForm
                 onAddStudent={addNewStudent}
                 onCloseModal={closeModal}
               />
@@ -253,7 +253,7 @@ function Students() {
                     />
                   </td>
                   <td className="">
-                    <DeleteStudentButton
+                    <DeleteButton
                       studentId={student.id}
                       onDeleteStudent={(deletedStudentId) => {
                         const updatedStudents = students.filter(
@@ -281,7 +281,7 @@ function Students() {
 
       {/* Update Student Modal */}
       {showUpdateModal && selectedStudent !== null && (
-        <UpdateStudentForm
+        <UpdateForm
           student={selectedStudent}
           onUpdateStudent={updateStudent}
           onCloseModal={closeUpdateModal}

@@ -12,13 +12,13 @@ interface Student {
   company: { name: string };
 }
 
-interface UpdateStudentFormProps {
+interface UpdateFormProps {
   student: Student;
   onUpdateStudent: (updatedStudent: Student) => void;
   onCloseModal: () => void;
 }
 
-const UpdateStudentForm: React.FC<UpdateStudentFormProps> = ({
+const UpdateForm: React.FC<UpdateFormProps> = ({
   student,
   onUpdateStudent,
   onCloseModal,
@@ -120,4 +120,4 @@ const UpdateStudentForm: React.FC<UpdateStudentFormProps> = ({
   );
 };
 
-export default UpdateStudentForm;
+export default UpdateForm;

@@ -3,12 +3,12 @@ import React, { useState }  from "react";
 import styles from './deletebutton.module.css'
 import { FiTrash } from "react-icons/fi";
 
-interface DeleteStudentButtonProps {
+interface DeleteButtonProps {
   studentId: string | number;
   onDeleteStudent: (studentId: string | number) => void;
 }
 
-const DeleteStudentButton: React.FC<DeleteStudentButtonProps> = ({
+const DeleteButton: React.FC<DeleteButtonProps> = ({
   studentId,
   onDeleteStudent,
 }) => {
@@ -59,4 +59,4 @@ const DeleteStudentButton: React.FC<DeleteStudentButtonProps> = ({
   );
 };
 
-export default DeleteStudentButton;
+export default DeleteButton;
