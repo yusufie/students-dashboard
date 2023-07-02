@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import './addform.css'
+import styles from './addform.module.css'
 
 interface Student {
   id: string | number;
@@ -67,8 +67,8 @@ const AddStudentForm: React.FC<AddStudentFormProps> = ({
   };
 
   return (
-    <div className="modal">
-      <div className="modalContent">
+    <div className={styles.modal}>
+      <div className={styles.modalContent}>
         <h2>Add New Student</h2>
 
         <form onSubmit={addNewStudent}>
@@ -119,7 +119,7 @@ const AddStudentForm: React.FC<AddStudentFormProps> = ({
             placeholder="Phone"
           />
 
-          <div className="modalButtons">
+          <div className={styles.modalButtons}>
 
             <button type="submit">Save</button>
             <button type="button" onClick={onCloseModal}>Cancel</button>

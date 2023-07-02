@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './updateform.css'
+import styles from './updateform.module.css'
 
 interface Student {
   id: string | number;
@@ -40,8 +40,8 @@ const UpdateStudentForm: React.FC<UpdateStudentFormProps> = ({
   };
 
   return (
-    <div className="modal">
-      <div className="modalContent">
+    <div className={styles.modal}>
+      <div className={styles.modalContent}>
         <h2>Update Student</h2>
         <form onSubmit={handleSubmit}>
           
@@ -107,7 +107,7 @@ const UpdateStudentForm: React.FC<UpdateStudentFormProps> = ({
               }}
             />
 
-          <div className="modalButtons">
+          <div className={styles.modalButtons}>
 
             <button type="submit">Update</button>
             <button type="button" onClick={onCloseModal}>Cancel</button>

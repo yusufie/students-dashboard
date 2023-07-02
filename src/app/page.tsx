@@ -3,8 +3,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 // import useAuthStore from "@/store/authStore";
 import dynamic from "next/dynamic";
-import Head from 'next/head';
-import './home.css';
+import styles from './page.module.css'
 import Navbar from "@/components/Navbar/Navbar"
 import Header from "@/components/Header/Header";
 import homeData from "@/data/homeData";
@@ -27,38 +26,28 @@ export default function Home() {
   }
 
   return (
-      <>
 
-      <Head>
-        <link rel="preload" href="./home.css" as="style"
-          onLoad={() => {
-            "this.onload=null;this.rel='stylesheet'"
-          }}
-        />
-      </Head>
-
-    <main className="homePage">
+    <main className={styles.homePage}>
 
         <Navbar />
 
-      <div className="homeOverview">
+      <div className={styles.homeOverview}>
 
         <Header />
 
-        <div className="homeBoxes">
+        <div className={styles.homeBoxes}>
 
         {homeData.map((box) => (
 
-              <div className="homeBox" key={box.id} style={box.boxStyle}>
+              <div className={styles.homeBox} key={box.id} style={box.boxStyle}>
 
-                {React.createElement(box.icon, {
-                  style: box.style
-                })}
+                {React.createElement(box.icon, { style: box.style })}
+
                 <p>{box.title}</p>
+                
                 {box.currency ? (
                   <span> {box.count} {box.currency} </span>
-                ) : (
-                  <span>{box.count}</span>
+                ) : ( <span>{box.count}</span>
                 )}
 
               </div>
@@ -69,6 +58,5 @@ export default function Home() {
       </div>
 
     </main>
-    </>
   )
 }

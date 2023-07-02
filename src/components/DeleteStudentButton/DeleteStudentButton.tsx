@@ -1,6 +1,6 @@
 "use client";
 import React, { useState }  from "react";
-import './deletebutton.css'
+import styles from './deletebutton.module.css'
 import { FiTrash } from "react-icons/fi";
 
 interface DeleteStudentButtonProps {
@@ -40,21 +40,15 @@ const DeleteStudentButton: React.FC<DeleteStudentButtonProps> = ({
   return (
     <>
       <button onClick={openConfirmationModal}>
-        <FiTrash
-          style={{
-            height: "19px",
-            width: "19px",
-            color: "#FEAF00",
-          }}
-        />
+        <FiTrash style={{ height: "19px", width: "19px", color: "#FEAF00", }} />
       </button>
 
       {showConfirmation && (
-        <div className="modal">
-          <div className="modalContent">
+        <div className={styles.modal}>
+          <div className={styles.modalContent}>
             <h2>Confirm Delete</h2>
             <p>Are you sure you want to delete this student?</p>
-            <div className="modalButtons">
+            <div className={styles.modalButtons}>
               <button onClick={handleDelete}>Delete</button>
               <button onClick={closeConfirmationModal}>Cancel</button>
             </div>

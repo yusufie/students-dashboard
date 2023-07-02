@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import './page.css'
+import styles from './page.module.css'
 import Navbar from "@/components/Navbar/Navbar";
 import Header from "@/components/Header/Header";
 import { GoPencil } from "react-icons/go";
@@ -83,7 +83,7 @@ function Students() {
       <>
         {parts.map((part, index) =>
           part.toLowerCase() === search.toLowerCase() ? (
-            <span key={index} className="highlight">
+            <span key={index} className={styles.highlight}>
               {part}
             </span>
           ) : (
@@ -178,15 +178,15 @@ function Students() {
   };
 
   return (
-    <section className="studentsPage">
+    <section className={styles.studentsPage}>
       <Navbar />
 
-      <div className="studentsOverview">
+      <div className={styles.studentsOverview}>
         <Header />
 
-        <div className="studentsPageTop">
+        <div className={styles.studentsPageTop}>
           <h1>Students List</h1>
-          <div className="studentsPageTopRight">
+          <div className={styles.studentsPageTopRight}>
             {/* <div className="searchIcon"> */}
             <IoMdSearch />
             <input
@@ -204,16 +204,16 @@ function Students() {
                 onCloseModal={closeModal}
               />
             ) : (
-              <button className="add-student-button" onClick={openModal}>
+              <button onClick={openModal}>
                 ADD NEW STUDENT
               </button>
             )}
           </div>
         </div>
 
-        <div id="studentsList">
-          <table className="border border-separate border-spacing-y-3 ">
-            <thead>
+        <div className={styles.studentsList}>
+          <table className={styles.table}>
+            <thead className={styles.thead}>
               <tr>
                 <th>{/*Picture */}</th>
                 <th>Name</th>
@@ -226,10 +226,10 @@ function Students() {
               </tr>
             </thead>
 
-            <tbody className="border rounded-lg">
+            <tbody className={styles.tbody}>
               {currentStudents.map((student) => (
-                <tr key={student.id} className="">
-                  <td className="">
+                <tr key={student.id} >
+                  <td >
                     <Image
                       src={student.image}
                       alt="student picture"

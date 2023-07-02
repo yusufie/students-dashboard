@@ -1,10 +1,10 @@
-import './header.css'
+import styles from './header.module.css'
 import { TbCircleCaretLeft } from 'react-icons/tb';
 import { FaRegBell } from 'react-icons/fa';
 
 function Header() {
   return (
-    <div className="homeHeader">
+    <div className={styles.homeHeader}>
 
       <button className="icon">
         <TbCircleCaretLeft style={{height:"18px", width:"18px", color:"#C4C4C4"}}/>

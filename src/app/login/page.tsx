@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import './page.css'
+import styles from './page.module.css'
 
 import useAuthStore from "@/store/authStore";
 
@@ -25,17 +25,17 @@ function Login() {
   };
 
   return (
-    <section className="loginPage">
-      <div className="loginContainer">
-        <div className="loginTitles">
-          <div className="loginHeader">
+    <section className= {styles.loginPage}>
+      <div className={styles.loginContainer}>
+        <div className={styles.loginTitles}>
+          <div className={styles.loginHeader}>
             <h1>MANAGE COURSES</h1>
           </div>
           <h2>SIGN IN</h2>
           <p>Enter your credentials to access your account</p>
         </div>
 
-        <form className="loginForm" onSubmit={handleSubmit}>
+        <form className={styles.loginForm} onSubmit={handleSubmit}>
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -63,7 +63,7 @@ function Login() {
           </button>
         </form>
 
-        <span className="resetPassword">
+        <span className={styles.resetPassword}>
           Forgot your password? &nbsp; <Link href="/reset">Reset Password</Link>
         </span>
       </div>

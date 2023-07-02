@@ -1,6 +1,6 @@
 import React from "react";
 import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri";
-import "./pagination.css";
+import styles from "./pagination.module.css";
 
 interface PaginationProps {
   currentPage: number;
@@ -33,7 +33,7 @@ const Pagination: React.FC<PaginationProps> = ({
       pageNumbers.push(
         <li
           key={i}
-          className={i === currentPage ? "active" : ""}
+          className={`${i === currentPage ? styles.active : ''}`}
           onClick={() => handlePageChange(i)}
         >
           {i}
@@ -45,11 +45,11 @@ const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className="pagination">
+    <div className={styles.pagination}>
 
-      <div className="pagination-info">
+      <div className={styles.paginationInfo}>
         <span>Rows per page:</span>
-        <select className="pagination-select"
+        <select className={styles.paginationSelect}
           value={rowsPerPage}
           onChange={handleRowsPerPageChange}
         >
@@ -61,7 +61,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
       <ul>
 
-        <div className="paginationNumbers">
+        <div className={styles.paginationNumbers}>
         {renderPageNumbers()}
         </div>
 
