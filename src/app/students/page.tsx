@@ -245,13 +245,7 @@ function Students() {
                   <td>{highlightMatch(student.domain, searchTerm)}</td>
                   <td>{highlightMatch(student.company.name, searchTerm)}</td>
                   <td>
-                    <GoPencil
-                      style={{
-                        height: "19px",
-                        width: "19px",
-                        color: "#FEAF00",
-                        marginRight: "1em",
-                      }}
+                    <GoPencil style={{ height: "19px", width: "19px", color: "#FEAF00", marginRight: "1em", cursor: "pointer"}}
                       onClick={() => openUpdateModal(student)}
                     />
                   </td>

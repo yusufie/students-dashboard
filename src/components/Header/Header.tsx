@@ -6,13 +6,13 @@ function Header() {
   return (
     <div className="homeHeader">
 
-      <div className="icon">
+      <button className="icon">
         <TbCircleCaretLeft style={{height:"18px", width:"18px", color:"#C4C4C4"}}/>
-      </div>
+      </button>
 
-      <div className="icon">
+      <button className="icon">
         <FaRegBell style={{height:"18px", width:"20px", color:"#C4C4C4"}}/>
-      </div>
+      </button>
       
   </div>
   )

@@ -10,7 +10,6 @@
     align-items: center;
     color: #000;
     font-size: 20px;
-    /* font-family: Montserrat; */
     font-weight: 700;
     height: 24px;
     padding-left: 12.5px;
@@ -31,13 +30,11 @@
     height: 130px;
     border-radius: 50%;
     background: #fff;
-    border: 1px solid #f8d442;
   }
 
   .asideName {
     color: #000;
     font-size: 17px;
-    /* font-family: Montserrat; */
     font-weight: 700;
     display: flex;
     justify-content: center;
@@ -47,7 +44,6 @@
   .asideRole {
     color: #feaf00;
     font-size: 14px;
-    /* font-family: Montserrat; */
     font-weight: 500;
     display: flex;
     justify-content: center;
@@ -65,7 +61,6 @@
     list-style: none;
     color: #000;
     font-size: 14px;
-    /* font-family: Montserrat; */
     font-weight: 500;
     gap: 20px;
   }
@@ -109,6 +104,5 @@
   .logout p {
     color: #000;
     font-size: 14px;
-    /* font-family: Montserrat; */
     font-weight: 500;
   }

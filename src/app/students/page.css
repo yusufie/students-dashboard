@@ -23,7 +23,6 @@
   .studentsPageTop h1 {
     color: #000;
     font-size: 22px;
-    /* font-family: Montserrat; */
     font-weight: 700;
   }
   
@@ -36,7 +35,6 @@
   
     color: #c4c4c4;
     font-size: 14px;
-    /* font-family: Montserrat; */
     padding-left: 13px;
   }
   
@@ -47,7 +45,6 @@
     background: #feaf00;
     color: #fff;
     font-size: 14px;
-    /* font-family: Montserrat; */
     font-weight: 500;
     margin-left: 24px;
   }
@@ -71,7 +68,6 @@
     text-align: left;
     color: #acacac;
     font-size: 12px;
-    /* font-family: Montserrat; */
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -91,7 +87,6 @@
     background: #fff;
     color: #000;
     font-size: 14px;
-    /* font-family: Montserrat; */
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -103,6 +98,11 @@
     margin-bottom: 14px;
   }
   
+  tbody td:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
   .highlight {
     color: red;
   }
