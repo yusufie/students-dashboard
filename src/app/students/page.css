@@ -26,14 +26,26 @@
     font-weight: 700;
   }
   
+  .studentsPageTopRight {
+    position: relative;
+  }
+
+  .studentsPageTopRight svg:first-child {
+    position: absolute;
+    top: 12px;
+    margin-left: 11rem;
+    height: 1rem;
+    width: 1rem;
+    color: #c4c4c4;
+  }
+
   .studentsPageTop input {
     width: 212px;
     height: 37px;
     border-radius: 8px;
     border: 1px solid #e5e5e5;
     background: #fff;
-  
-    color: #c4c4c4;
+    color: red;
     font-size: 14px;
     padding-left: 13px;
   }
@@ -63,7 +75,7 @@
   }
   
   thead tr {
-    height: 58px;
+    height: 38px;
     align-items: start;
     text-align: left;
     color: #acacac;
@@ -74,7 +86,7 @@
   }
   
   thead th {
-    padding: 0 14px 0 14px;
+    padding: 0 14px 0 0;
   }
   
   tbody {
@@ -92,9 +104,24 @@
     line-height: normal;
     margin: 10px 0 10px 0;
   }
+
+  tbody tr td:first-child {
+    border-radius: 10px;
+    border-start-end-radius: 0px;
+    border-end-end-radius: 0px;
+  }
+
+  tbody tr td:last-child {
+    border-radius: 10px;
+    border-start-start-radius: 0px;
+    border-end-start-radius: 0px;
+  }
+
+  tbody tr td img {
+    height: auto;
+  }
   
   tbody td {
-    padding: 14px 14px 14px 14px;
     margin-bottom: 14px;
   }
   

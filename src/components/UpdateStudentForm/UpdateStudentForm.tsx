@@ -44,7 +44,7 @@ const UpdateStudentForm: React.FC<UpdateStudentFormProps> = ({
       <div className="modalContent">
         <h2>Update Student</h2>
         <form onSubmit={handleSubmit}>
-          <div>
+          
             <label htmlFor="firstName">First Name</label>
             <input
               type="text"
@@ -53,8 +53,8 @@ const UpdateStudentForm: React.FC<UpdateStudentFormProps> = ({
               value={updatedStudent.firstName}
               onChange={handleInputChange}
             />
-          </div>
-          <div>
+         
+          
             <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
@@ -63,8 +63,8 @@ const UpdateStudentForm: React.FC<UpdateStudentFormProps> = ({
               value={updatedStudent.lastName}
               onChange={handleInputChange}
             />
-          </div>
-          <div>
+          
+          
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -73,8 +73,7 @@ const UpdateStudentForm: React.FC<UpdateStudentFormProps> = ({
               value={updatedStudent.email}
               onChange={handleInputChange}
             />
-          </div>
-          <div>
+
             <label htmlFor="phone">Phone</label>
             <input
               type="text"
@@ -83,8 +82,7 @@ const UpdateStudentForm: React.FC<UpdateStudentFormProps> = ({
               value={updatedStudent.phone}
               onChange={handleInputChange}
             />
-          </div>
-          <div>
+
             <label htmlFor="domain">Domain</label>
             <input
               type="text"
@@ -93,8 +91,7 @@ const UpdateStudentForm: React.FC<UpdateStudentFormProps> = ({
               value={updatedStudent.domain}
               onChange={handleInputChange}
             />
-          </div>
-          <div>
+
             <label htmlFor="company">Company Name</label>
             <input
               type="text"
@@ -109,8 +106,14 @@ const UpdateStudentForm: React.FC<UpdateStudentFormProps> = ({
                 }));
               }}
             />
+
+          <div className="modalButtons">
+
+            <button type="submit">Update</button>
+            <button type="button" onClick={onCloseModal}>Cancel</button>
+
           </div>
-          <button type="submit">Update Student</button>
+
         </form>
       </div>
     </div>

@@ -20,16 +20,25 @@
 
   .modalContent h2 {
     margin-top: 0;
+    text-align: center;
+    color: #000;
+    font-weight: 600;
+  }
+
+  .modal p {
+    margin-top: 1rem;
   }
 
   .modalButtons {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 1rem;
   }
 
   .modalButtons button {
-    margin-left: 10px;
     padding: 10px 20px;
     background-color: #feaf00;
     border: none;
@@ -43,9 +52,9 @@
   }
   
   .modalButtons button:first-child {
-    background-color: #ccc;
+    background-color: #55bb55;
   }
   
   .modalButtons button:first-child:hover {
-    background-color: #999;
+    background-color: #218821;
   }

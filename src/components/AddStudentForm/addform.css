@@ -17,10 +17,14 @@
     border-radius: 5px;
     width: 400px;
     max-width: 100%;
+    
   }
   
   .modalContent h2 {
     margin-top: 0;
+    text-align: center;
+    color: #000;
+    font-weight: 600;
   }
   
   .modal form {
@@ -29,20 +33,26 @@
   }
   
   .modal form input {
-    margin-bottom: 10px;
+    margin: 0 0 10px 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+
+  .modal form img {
+    margin: 0 0 10px 10px;
+  }
   
   .modalButtons {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 1rem;
   }
   
   .modalButtons button {
-    margin-left: 10px;
     padding: 10px 20px;
     background-color: #feaf00;
     border: none;
@@ -56,9 +66,9 @@
   }
   
   .modalButtons button:first-child {
-    background-color: #ccc;
+    background-color: #55bb55;
   }
   
   .modalButtons button:first-child:hover {
-    background-color: #999;
+    background-color: #218821;
   }

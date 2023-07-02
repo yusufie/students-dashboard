@@ -73,20 +73,19 @@ const AddStudentForm: React.FC<AddStudentFormProps> = ({
 
         <form onSubmit={addNewStudent}>
 
-        <div>
             <Image
               src={newStudent.image}
               alt="Student Picture"
               width={65}
               height={55}
             />
+      
             <input
               type="text"
               name="image"
               value={newStudent.image}
               readOnly // Make the input field read-only
             />
-          </div>
 
           <input
             type="text"
@@ -121,11 +120,12 @@ const AddStudentForm: React.FC<AddStudentFormProps> = ({
           />
 
           <div className="modalButtons">
+
             <button type="submit">Save</button>
-            <button type="button" onClick={onCloseModal}>
-              Cancel
-            </button>
+            <button type="button" onClick={onCloseModal}>Cancel</button>
+
           </div>
+
         </form>
       </div>
     </div>

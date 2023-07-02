@@ -6,7 +6,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Header from "@/components/Header/Header";
 import { GoPencil } from "react-icons/go";
 import DeleteStudentButton from "@/components/DeleteStudentButton/DeleteStudentButton";
-
+import { IoMdSearch } from 'react-icons/io';
 import AddStudentForm from "@/components/AddStudentForm/AddStudentForm";
 import UpdateStudentForm from "@/components/UpdateStudentForm/UpdateStudentForm";
 import Pagination from "@/components/Pagination/Pagination";
@@ -187,6 +187,8 @@ function Students() {
         <div className="studentsPageTop">
           <h1>Students List</h1>
           <div className="studentsPageTopRight">
+            {/* <div className="searchIcon"> */}
+            <IoMdSearch />
             <input
               type="search"
               id="search"
@@ -194,6 +196,7 @@ function Students() {
               value={searchTerm}
               onChange={handleSearchChange}
             />
+            {/* </div> */}
 
             {showModal ? (
               <AddStudentForm
@@ -226,7 +229,7 @@ function Students() {
             <tbody className="border rounded-lg">
               {currentStudents.map((student) => (
                 <tr key={student.id} className="">
-                  <td className="rounded-xl rounded-e-none">
+                  <td className="">
                     <Image
                       src={student.image}
                       alt="student picture"
@@ -249,7 +252,7 @@ function Students() {
                       onClick={() => openUpdateModal(student)}
                     />
                   </td>
-                  <td className="rounded-xl rounded-s-none">
+                  <td className="">
                     <DeleteStudentButton
                       studentId={student.id}
                       onDeleteStudent={(deletedStudentId) => {
