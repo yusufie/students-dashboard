@@ -2,16 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import styles from './addform.module.css'
 
-interface Student {
-  id: string | number;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    image: string;
-    domain: string;
-    company: { name: string };
-  }
+import Student from "@/types/Student";
 
 interface AddFormProps {
   onAddStudent: (student: Student) => void;

@@ -4,24 +4,15 @@ import Image from "next/image";
 import styles from './page.module.css'
 import Navbar from "@/components/Navbar/Navbar";
 import Header from "@/components/Header/Header";
-import { GoPencil } from "react-icons/go";
 import DeleteButton from "@/components/DeleteButton/DeleteButton";
-import { IoMdSearch } from 'react-icons/io';
 import AddForm from "@/components/AddForm/AddForm";
 import UpdateForm from "@/components/UpdateForm/UpdateForm";
 import Pagination from "@/components/Pagination/Pagination";
 import { useRouter } from 'next/navigation';
+import { GoPencil } from "react-icons/go";
+import { IoMdSearch } from 'react-icons/io';
 import querystring from 'querystring';
-interface Student {
-  id: string | number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  image: string;
-  domain: string;
-  company: { name: string };
-}
+import Student from "@/types/Student";
 
 function Students() {
   const [students, setStudents] = useState<Student[]>([]);

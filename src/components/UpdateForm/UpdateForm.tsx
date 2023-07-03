@@ -1,16 +1,6 @@
 import React, { useState } from "react";
 import styles from './updateform.module.css'
-
-interface Student {
-  id: string | number;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  image: string;
-  domain: string;
-  company: { name: string };
-}
+import Student from "@/types/Student";
 
 interface UpdateFormProps {
   student: Student;
