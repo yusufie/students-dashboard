@@ -14,6 +14,9 @@ import { IoMdSearch } from 'react-icons/io';
 import querystring from 'querystring';
 import Student from "@/types/Student";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function Students() {
   const [students, setStudents] = useState<Student[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -124,8 +127,10 @@ function Students() {
 
       setStudents(updatedStudents);
       console.log("Student updated:", data);
+      toast.success("Student updated successfully!");
     } catch (error) {
       console.error("Error updating student:", error);
+      toast.error("Error updating student!");
     }
   };
 
@@ -150,8 +155,10 @@ function Students() {
       setStudents((prevStudents) => [data, ...prevStudents]);
 
       console.log("New student added:", data);
+      toast.success("New student added successfully!");
     } catch (error) {
       console.error("Error adding new student:", error);
+      toast.error("Error adding new student!");
     }
   };
 
@@ -169,6 +176,7 @@ function Students() {
   };
 
   return (
+    <>
     <section className={styles.studentsPage}>
       <Navbar />
 
@@ -279,6 +287,8 @@ function Students() {
         />
       )}
     </section>
+    <ToastContainer />
+    </>
   );
 }
 

@@ -3,6 +3,9 @@ import React, { useState }  from "react";
 import styles from './deletebutton.module.css'
 import { FiTrash } from "react-icons/fi";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 interface DeleteButtonProps {
   studentId: string | number;
   onDeleteStudent: (studentId: string | number) => void;
@@ -23,8 +26,10 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({
       const data = await response.json();
       onDeleteStudent(studentId);
       console.log("Student deleted:", data);
+      toast.success("Student deleted successfully!");
     } catch (error) {
       console.error("Error deleting student:", error);
+      toast.error("Error deleting student!");
     }
   };
 
