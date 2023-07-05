@@ -9,17 +9,15 @@ import useAuthStore from "@/store/authStore";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const login = useAuthStore((state) => state.login);
+  const { login } = useAuthStore();
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Save authentication state in local storage
-    localStorage.setItem("isLoggedIn", "true");
-
-    // Call the login action to set the Zustand state
-    login();
+    const email = (e.target as HTMLFormElement).email.value;
+    const password = (e.target as HTMLFormElement).password.value;
+    login(email, password);
 
     router.push("/");
   };

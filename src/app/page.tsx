@@ -1,34 +1,38 @@
 "use client";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-// import useAuthStore from "@/store/authStore";
-import dynamic from "next/dynamic";
+import useAuthStore from "@/store/authStore";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import styles from './page.module.css'
 import Navbar from "@/components/Navbar/Navbar"
 import Header from "@/components/Header/Header";
 import homeData from "@/data/homeData";
 
-const useAuthStore:any = dynamic(() => import("@/store/authStore"), {
-  ssr: false,
-});
+
 export default function Home() {
+  const { isLoggedIn, user } = useAuthStore();
   const router = useRouter();
-  const isLoggedIn = useAuthStore((state: any) => state.isLoggedIn);
 
   useEffect(() => {
     if (!isLoggedIn) {
-      router.push("/login");
+      // route to login page if not logged in
+      router.push('/login');
+    } else {
+      // show welcome message if logged in
+      toast(`Welcome ${user?.email}!`);
     }
-  }, [isLoggedIn, router]);
+  }, [isLoggedIn, router, user]);
 
   if (!isLoggedIn) {
+    // You can return a loading indicator or a message here if needed
     return null;
   }
 
-  return (
+ return (
 
     <main className={styles.homePage}>
-
+      
         <Navbar />
 
       <div className={styles.homeOverview}>
@@ -36,6 +40,7 @@ export default function Home() {
         <Header />
 
         <div className={styles.homeBoxes}>
+        <ToastContainer />
 
         {homeData.map((box) => (
 
