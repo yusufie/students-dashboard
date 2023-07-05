@@ -78,7 +78,7 @@
     padding: 15px;
   }
   
-  .loginForm button {
+  .loginButton {
     width: 415px;
     height: 44px;
     border-radius: 4px;
@@ -87,9 +87,37 @@
     font-size: 14px;
     font-weight: 500;
     margin: 30px 0 27px 0;
+    position: relative;
   }
 
-  .loginForm button:hover {
+  .loginButton.loading span {
+    position: relative;
+  }
+  
+  .loginButton.loading span::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(100% + 8px);
+    transform: translate(-50%, -50%);
+    border: 2px solid transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  .loginButton:hover {
     background: #eba000;
   }
   

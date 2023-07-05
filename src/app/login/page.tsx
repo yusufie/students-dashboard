@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styles from './page.module.css'
@@ -10,17 +10,31 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login } = useAuthStore();
+  const [isLoading, setIsLoading] = useState(false); // loading indicator
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
+    setIsLoading(true); // Enable loading state
+
     const email = (e.target as HTMLFormElement).email.value;
     const password = (e.target as HTMLFormElement).password.value;
-    login(email, password);
 
-    router.push("/");
+    try {
+
+      login(email, password);
+      router.push("/");
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false); // Disable loading state
+    }
+
   };
+
+  useEffect(() => {
+    setIsLoading(false); // Disable loading state when component mounts
+  }, []);
 
   return (
     <section className= {styles.loginPage}>
@@ -56,8 +70,12 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type="submit" className="loginButton">
-            SIGN IN
+          <button type="submit" className={`${styles.loginButton} ${isLoading ? styles.loading : ""}`}
+            disabled={isLoading} // Disable button when component is loading
+          >
+            <span>
+            {isLoading ? "Signing in..." : "SIGN IN"}
+            </span>
           </button>
         </form>
 
